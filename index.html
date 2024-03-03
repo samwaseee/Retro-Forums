@@ -1,11 +1,88 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Retro Forums</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+        .mul {
+            font-family: "Mulish", sans-serif;
+        }
+
+        .inter {
+            font-family: "Inter", sans-serif;
+        }
+    </style>
 </head>
-<body>
-    
+
+<body class="w-[81.25vw] mx-auto mt-8">
+    <header>
+        <nav>
+            <div class="navbar bg-base-100">
+                <div class="flex-1">
+                    <img src="./images/logo.png" alt="">
+                </div>
+                <div>
+                    <div class="tooltip mx-1" data-tip="Home">
+                        <button class="btn rounded-full w-14 h-14">
+                            <img class="" src="./images/Vectorhome.png" alt="">
+                        </button>
+                    </div>
+                    <div class="tooltip mx-1" data-tip="Write Something">
+                        <button class="btn rounded-full w-14 h-14">
+                            <img class="" src="./images/Framepen.png" alt="">
+                        </button>
+                    </div>
+                    <div class="tooltip mx-1" data-tip="Contact Us">
+                        <button class="btn rounded-full w-14 h-14">
+                            <img class="" src="./images/Frameconatct.png" alt="">
+                        </button>
+                    </div>
+                    <div class="tooltip mx-1" data-tip="About Us">
+                        <button class="btn rounded-full w-14 h-14">
+                            <img class="" src="./images/Frameflag.png" alt="">
+                        </button>
+                    </div>
+                    <button class="btn bg-[#797DFC] rounded-full ml-5 mul text-lg font-bold text-white px-8 h-14">Sign
+                        In</button>
+                </div>
+            </div>
+        </nav>
+
+        <div class="hero bg-[#12132D] py-24 rounded-3xl mt-12">
+            <div class="hero-content flex-col lg:flex-row-reverse justify-between gap-36">
+                <div class="bg-white grid gap-5 rounded-3xl font-bold text-2xl p-10 mul">
+                    <p class="flex">Redistered Users <span class="ml-8">1475</span></p>
+                    <p class="flex">Forum<span class="ml-44">52</span></p>
+                    <p class="flex">Topics<span class="ml-36">1458</span></p>
+                    <p class="flex">Replies<span class="ml-32">24141</span></p>
+                </div>
+                <div>
+                    <h1 class="mul text-7xl font-extrabold text-white">Welcome to the <br> <span
+                            class="text-[#797DFC]">ReTro</span> Forum</h1>
+                    <p class="py-6 text-[#ffffffad] text-xl"> Share your favorite opinion and win and wp <br>forum coffee mug!
+                    </p>
+                    <label class="input input-bordered flex items-center gap-2 rounded-3xl w-96">
+                        <input type="text" class="grow" placeholder="Search here anything" />
+                        <button
+                            class="btn bg-[#797DFC] rounded-full mul text-lg font-bold text-white -mr-3 px-8  h-[2.5rem] min-h-[2rem]">Search</button>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="my-14">
+        <section>
+            <h1 class="text-4xl font-bold text-center">Let's Discuss</h1>
+        </section>
+    </main>
 </body>
+
 </html>
