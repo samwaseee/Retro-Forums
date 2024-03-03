@@ -12,8 +12,7 @@ const displayPost = posts => {
     const postDiv = document.getElementById('posts');
 
     posts.forEach(e => {
-        console.log(e);
-
+        const string = e.title;
         const postcard = document.createElement('div');
         postcard.classList = `bg-[#F3F3F5] p-6 rounded-2xl flex mb-5`;
         postcard.innerHTML = `
@@ -29,7 +28,7 @@ const displayPost = posts => {
                 Author: <p>${e.author.name}</p>
             </div>
             <h4 class="mul text-xl font-bold mt-4">${e.title}</h4>
-            <p class="border-b-2 border-black border-dashed py-4 text-[#12132d75]">${e.description}</p>
+            <p class="border-b-2 border-[#12132D40] border-dashed py-4 text-[#12132d75]">${e.description}</p>
             <div class="flex text-[#12132d75] mt-4">
                 <div class="flex grow">
                     <img src="./images/Group 13.png" class="mr-3">
@@ -39,13 +38,26 @@ const displayPost = posts => {
                 <img src="./images/Group 18time.png" class="mr-3 ml-9">
                 <p>${e.posted_time} min</p>
                 </div>
-                <button class="btn-ghost h-7 min-h-3 rounded-2xl"><img src="./images/Group 40106read-sign.png"></button>
+                <button class="btn-ghost rounded-2xl bt" onclick = "ok(${string})"><img src="./images/Group 40106read-sign.png"></button>
             </div>
         </div>
         `
-        postDiv.appendChild(postcard)
+        postDiv.appendChild(postcard);
     });
 
+}
+
+
+function ok(event){
+    // document.getElementById('posts').addEventListener('click',function(event){
+    //     const mnode = event.target.parentNode.parentNode.parentNode.childNodes;
+    //     const title = mnode[3].innerText;
+    //     const node = (event.target.parentNode.parentNode.childNodes);
+    //     const cnode = node[1].childNodes;
+    //     const view = cnode[7].innerText;
+    //     console.log(mnode[3].innerText);
+    // })
+    console.log(event);
 }
 
 const loadLatestPost = async () => {
