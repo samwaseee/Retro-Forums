@@ -1,12 +1,58 @@
-// fetch('https://openapi.programming-hero.com/api/retro-forum/posts')
-// .then(res => res.json())
-// .then(data => console.log(data))
+const loadPost = async () => {
+    const res = await fetch('https://openapi.programming-hero.com/api/retro-forum/posts');
+    const data = await res.json();
+    const posts = data.posts;
+    //console.log(typeof posts)
+    displayPost(posts);
+}
+loadPost();
+
+const displayPost = posts => {
+    
+    const postDiv = document.getElementById('posts');
+
+    posts.forEach(e => {
+        console.log(e);
+
+        const postcard = document.createElement('div');
+        postcard.classList = `bg-[#F3F3F5] p-6 rounded-2xl flex mb-5`;
+        postcard.innerHTML = `
+        <div class="avatar ${e.isActive ? 'online' : 'offline' } h-24">
+            <div class="w-20 h-20 rounded-xl mt-4 mr-4">
+                <img class=""
+                    src="${e.image}" />
+            </div>
+        </div>
+        <div class="mt-4 ml-4 lg:w-[596px]">
+            <div class="flex font-medium">
+                #<h5 class="mr-7">${e.category}</h5>
+                Author: <p>${e.author.name}</p>
+            </div>
+            <h4 class="mul text-xl font-bold mt-4">${e.title}</h4>
+            <p class="border-b-2 border-black border-dashed py-4 text-[#12132d75]">${e.description}</p>
+            <div class="flex text-[#12132d75] mt-4">
+                <div class="flex grow">
+                    <img src="./images/Group 13.png" class="mr-3">
+                <p>${e.comment_count}</p>
+                <img src="./images/Group 16eye.png" class="mr-3 ml-9">
+                <p>${e.view_count}</p>
+                <img src="./images/Group 18time.png" class="mr-3 ml-9">
+                <p>${e.posted_time} min</p>
+                </div>
+                <button class="btn-ghost h-7 min-h-3 rounded-2xl"><img src="./images/Group 40106read-sign.png"></button>
+            </div>
+        </div>
+        `
+        postDiv.appendChild(postcard)
+    });
+
+}
 
 const loadLatestPost = async () => {
     const res = await fetch('https://openapi.programming-hero.com/api/retro-forum/latest-posts');
     const data = await res.json();
     const posts = data;
-    //console.log(posts)
+    //console.log(typeof posts)
     displayLatestPost(posts);
 }
 
