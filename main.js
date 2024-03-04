@@ -1,21 +1,31 @@
-const loadPost = async () => {
-    const res = await fetch('https://openapi.programming-hero.com/api/retro-forum/posts');
-    const data = await res.json();
-    const posts = data.posts;
-    //console.log(typeof posts)
-    displayPost(posts);
+const loadPost = async (searchText) => {
+    if (searchText === null) {
+        const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts`);
+        const data = await res.json();
+        const posts = data.posts;
+        //console.log(typeof posts)
+        displayPost(posts);
+    }
+    else{
+        const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts?category=${searchText}`);
+        const data = await res.json();
+        const posts = data.posts;
+        //console.log(typeof posts)
+        displayPost(posts);
+    }
 }
-loadPost();
 
 const displayPost = posts => {
-    
+
     const postDiv = document.getElementById('posts');
 
+    postDiv.textContent = ''
+    
     posts.forEach(e => {
         const postcard = document.createElement('div');
         postcard.classList = `bg-[#F3F3F5] p-6 rounded-2xl flex mb-5`;
         postcard.innerHTML = `
-        <div class="avatar ${e.isActive ? 'online' : 'offline' } h-24">
+        <div class="avatar ${e.isActive ? 'online' : 'offline'} h-24">
             <div class="w-20 h-20 rounded-xl mt-4 mr-4">
                 <img class=""
                     src="${e.image}" />
@@ -37,7 +47,7 @@ const displayPost = posts => {
                 <img src="./images/Group 18time.png" class="mr-3 ml-9">
                 <p>${e.posted_time} min</p>
                 </div>
-                <button class="btn-ghost rounded-2xl bt" onclick = "ok('${e.title}',${e.view_count})"><img src="./images/Group 40106read-sign.png"></button>
+                <button class="btn-ghost rounded-2xl bt" onclick = "ok('${e.title.replace(/'/g, "\\'")}',${e.view_count})"><img src="./images/Group 40106read-sign.png"></button>
             </div>
         </div>
         `
@@ -47,8 +57,8 @@ const displayPost = posts => {
 }
 
 
-function ok(event,view){
-    console.log(event,view);
+function ok(event, view) {
+    console.log(event, view);
 
     const section = document.createElement('div');
     section.classList = 'flex bg-white rounded-xl p-4 mb-4';
@@ -58,11 +68,19 @@ function ok(event,view){
     <p class="my-auto">${view}</p>
     `
     document.getElementById('read').appendChild(section);
-    
+
 }
 
+
+function search() {
+    const searchText = (document.getElementById('searchinput').value);
+    loadPost(searchText);
+}
+
+loadPost(null);
+
 const loadLatestPost = async () => {
-    const res = await fetch('https://openapi.programming-hero.com/api/retro-forum/latest-posts');
+    const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/latest-posts`);
     const data = await res.json();
     const posts = data;
     //console.log(typeof posts)
@@ -74,7 +92,7 @@ loadLatestPost();
 const displayLatestPost = posts => {
 
     const latestPostDiv = document.getElementById('latest-post');
-    
+
     posts.forEach(element => {
         const postcard = document.createElement('div');
         postcard.classList = `card w-96 bg-base-100 shadow-xl`;
