@@ -22,16 +22,16 @@
 </head>
 
 <body>
-    <header class="w-[81.25vw] mx-auto mt-8">
+    <header class="md:w-[81.25vw] mx-auto mt-8">
         <nav>
-            <div class="navbar bg-base-100">
+            <div class="md:navbar bg-base-100">
                 <div class="flex-1">
                     <img src="./images/logo.png" alt="">
                 </div>
                 <div>
                     <div class="tooltip mx-1" data-tip="Home">
                         <button class="btn rounded-full w-14 h-14">
-                            <img class="" src="./images/Vectorhome.png" alt="">
+                            <img class="" src="./images/Vectorhome.png">
                         </button>
                     </div>
                     <div class="tooltip mx-1" data-tip="Write Something">
@@ -49,15 +49,15 @@
                             <img class="" src="./images/Frameflag.png" alt="">
                         </button>
                     </div>
-                    <button class="btn bg-[#797DFC] rounded-full ml-5 mul text-lg font-bold text-white px-8 h-14">Sign
+                    <button class="btn bg-[#797DFC] rounded-full md:ml-5 mul text-lg font-bold text-white px-8 md:h-14">Sign
                         In</button>
                 </div>
             </div>
         </nav>
 
         <div class="hero bg-[#12132D] py-24 rounded-3xl mt-12 bg-[url('./images/bgbanner.png')]">
-            <div class="hero-content flex-col lg:flex-row-reverse justify-between gap-36">
-                <div class="bg-white grid gap-5 rounded-3xl font-bold text-2xl p-10 mul">
+            <div class="hero-content flex-col-reverse lg:flex-row-reverse justify-between md:gap-36">
+                <div class="bg-white grid gap-5 rounded-3xl font-bold text-2xl p-5 md:p-10 mul">
                     <p class="flex">Redistered Users <span class="ml-8">1475</span></p>
                     <p class="flex">Forum<span class="ml-44">52</span></p>
                     <p class="flex">Topics<span class="ml-36">1458</span></p>
@@ -69,7 +69,7 @@
                     <p class="py-6 text-[#ffffffad] text-xl"> Share your favorite opinion and win and <span class="font-bold text-[#797DFC]">ReTro</span> <br>forum
                         coffee mug!
                     </p>
-                    <label class="input input-bordered flex items-center gap-2 rounded-3xl w-96">
+                    <label class="input input-bordered flex items-center gap-2 rounded-3xl md:w-96">
                         <input type="text" id="searchinput" class="grow" placeholder="Search here anything" />
                         <button onclick="search()"
                             class="btn bg-[#797DFC] rounded-full mul text-lg font-bold text-white -mr-3 px-8  h-[2.5rem] min-h-[2rem]">Search</button>
@@ -79,23 +79,33 @@
         </div>
     </header>
 
-    <main class="w-[81.25vw] mx-auto  my-14">
+    <main class="md:w-[81.25vw] mx-auto  my-14">
         <section>
             <h1 class="text-4xl font-bold text-center">Let's Discuss</h1>
             <p class="text-center my-5">We discuss about every socioeconomic, technological and many other forums that
                 is trending right now <br> click on the forums to read </p>
         </section>
 
-        <section class="flex inter gap-5">
+        <section class="lg:flex inter gap-5">
+            <span id="loading" class="loading loading-bars loading-lg w-52 hidden"></span>
             <div id="posts">
-
+                <div class="flex flex-col gap-4 lg:w-[700px]">
+                    <div class="flex gap-4 items-center">
+                      <div class="skeleton w-16 h-16 rounded-full shrink-0"></div>
+                      <div class="flex flex-col gap-4">
+                        <div class="skeleton h-4 w-20"></div>
+                        <div class="skeleton h-4 w-28"></div>
+                      </div>
+                    </div>
+                    <div class="skeleton h-32 w-full"></div>
+                  </div>
             </div>
-            <div class="bg-[#12132D0D] p-5 rounded-xl h-fit">
+            <div class="bg-[#12132D0D] p-5 rounded-xl h-fit w-full max-w-96">
                 <div class="flex mb-5 mx-2">
                     <h4 class="grow font-bold text-xl">Title</h4>
                     <img src="./images/Framemarked-sign.png" alt="">
-                    <p>Mark as read</p>
-                    <span id="mark"></span>
+                    <p>Mark as read (</p>
+                    <span id="mark">0</span>)
                 </div>
                 <div id="read">
                 
@@ -116,27 +126,11 @@
               </div>
         </section>
 
-        <section>
+        <section> 
             <h1 class="text-center text-3xl font-bold mt-16">Latest Posts</h1>
             <p class="text-center text-[#00000080] my-5">Watch out for the latest trends in our forums <br> Get the latest updates with a wide range of users sharing their thoughts on our platform</p>
-            <div class="flex gap-4" id="latest-post">
-                <!-- <div class="card w-96 bg-base-100 shadow-xl">
-                    <figure class="bg-[#12132D0D] w-80 h-44 mx-auto mt-7 rounded-2xl"></figure>
-                    <div class="card-body">
-                        <div class="flex gap-2"><img src="./images/Framedate.png" alt=""> <p class="inter text-[#12132d7d] font-semibold">29 january 2024</p></div>
-                      <h2 class="card-title">
-                        Shoes!
-                      </h2>
-                      <p class="text-[#12132D99]">If a dog chews shoes whose shoes does he choose?</p>
-                      <div class="card-actions flex">
-                        <img src="./images/Ellipse 1.png" alt="">
-                        <div>
-                            <h6 class="font-bold">Cameron Williamson</h6>
-                            <p class="text-[#12132D99]">ROR Developer</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>  -->
+            <div class="lg:flex gap-4" id="latest-post">
+              
             </div>
         </section>
     </main>
@@ -149,7 +143,7 @@
           </p> 
         </aside> 
         <nav>
-          <a href="">
+          <a href="https://www.facebook.com/programmingherowebcourse">
             <img src="./images/Social.png" alt="">
           </a>
         </nav>
