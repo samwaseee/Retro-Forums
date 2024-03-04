@@ -12,7 +12,6 @@ const displayPost = posts => {
     const postDiv = document.getElementById('posts');
 
     posts.forEach(e => {
-        const string = e.title;
         const postcard = document.createElement('div');
         postcard.classList = `bg-[#F3F3F5] p-6 rounded-2xl flex mb-5`;
         postcard.innerHTML = `
@@ -38,7 +37,7 @@ const displayPost = posts => {
                 <img src="./images/Group 18time.png" class="mr-3 ml-9">
                 <p>${e.posted_time} min</p>
                 </div>
-                <button class="btn-ghost rounded-2xl bt" onclick = "ok(${string})"><img src="./images/Group 40106read-sign.png"></button>
+                <button class="btn-ghost rounded-2xl bt" onclick = "ok('${e.title}',${e.view_count})"><img src="./images/Group 40106read-sign.png"></button>
             </div>
         </div>
         `
@@ -48,16 +47,18 @@ const displayPost = posts => {
 }
 
 
-function ok(event){
-    // document.getElementById('posts').addEventListener('click',function(event){
-    //     const mnode = event.target.parentNode.parentNode.parentNode.childNodes;
-    //     const title = mnode[3].innerText;
-    //     const node = (event.target.parentNode.parentNode.childNodes);
-    //     const cnode = node[1].childNodes;
-    //     const view = cnode[7].innerText;
-    //     console.log(mnode[3].innerText);
-    // })
-    console.log(event);
+function ok(event,view){
+    console.log(event,view);
+
+    const section = document.createElement('div');
+    section.classList = 'flex bg-white rounded-xl p-4 mb-4';
+    section.innerHTML = `
+    <p class="mr-6 font-bold">${event}</p>
+    <img src="./images/Group 16eye.png" class="my-auto">
+    <p class="my-auto">${view}</p>
+    `
+    document.getElementById('read').appendChild(section);
+    
 }
 
 const loadLatestPost = async () => {
